@@ -10,9 +10,9 @@ import UIKit
 import ReactiveCocoa
 
 struct AssociationKey {
-  static var bindingContext: UInt8 = 0
   static var hidden: UInt8 = 1
   static var alpha: UInt8 = 2
+  static var text: UInt8 = 3
 }
 
 // lazily creates a gettable associated property via the given factory
@@ -50,35 +50,13 @@ extension UIView {
 
 extension UILabel {
   public var rac_text: MutableProperty<String> {
-    return lazyAssociatedProperty(self, &AssociationKey.bindingContext) {
-      var property = MutableProperty<String>(self.text ?? "")
-      property.producer
-        .start(next: {
-          newValue in
-          self.text = newValue
-        })
-      return property
-    }
-  }
-}
-
-extension UIImageView {
-  public var rac_image: MutableProperty<UIImage?> {
-    return lazyAssociatedProperty(self, &AssociationKey.bindingContext) {
-      var property = MutableProperty<UIImage?>(self.image)
-      property.producer
-        .start(next: {
-          newValue in
-          self.image = newValue
-        })
-      return property
-    }
+    return lazyMutableProperty(self, &AssociationKey.text, { self.text = $0 }, { self.text ?? "" })
   }
 }
 
 extension UITextField {
   public var rac_text: MutableProperty<String> {
-    return lazyAssociatedProperty(self, &AssociationKey.bindingContext) {
+    return lazyAssociatedProperty(self, &AssociationKey.text) {
       
       self.addTarget(self, action: "changed", forControlEvents: UIControlEvents.EditingChanged)
       

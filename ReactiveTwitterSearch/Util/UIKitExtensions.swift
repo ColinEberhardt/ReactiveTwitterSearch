@@ -17,13 +17,11 @@ struct AssociationKey {
 
 // lazily creates a gettable associated property via the given factory
 func lazyAssociatedProperty<T: AnyObject>(host: AnyObject, key: UnsafePointer<Void>, factory: ()->T) -> T {
-  var associatedProperty = objc_getAssociatedObject(host, key) as? T
-  
-  if associatedProperty == nil {
-    associatedProperty = factory()
+  return objc_getAssociatedObject(host, key) as? T ?? {
+    let associatedProperty = factory()
     objc_setAssociatedObject(host, key, associatedProperty, UInt(OBJC_ASSOCIATION_RETAIN))
-  }
-  return associatedProperty!
+    return associatedProperty
+  }()
 }
 
 func lazyMutableProperty<T>(host: AnyObject, key: UnsafePointer<Void>, setter: T -> (), getter: () -> T) -> MutableProperty<T> {

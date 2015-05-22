@@ -24,11 +24,20 @@ class TweetCellView: UITableViewCell, ReactiveView {
   
   func bindViewModel(viewModel: AnyObject) {
     if let tweetViewModel = viewModel as? TweetViewModel {
-      statusText.rac_text <~ tweetViewModel.status
-      usernameText.rac_text <~ tweetViewModel.username.producer |> map { "@\($0)" };
-      ageText.rac_text <~ tweetViewModel.ageInSeconds.producer |> map { "\($0) secs" };
       
       let triggerSignal = self.rac_prepareForReuseSignal.asSignal() |> toVoidSignal
+      
+      statusText.rac_text <~ tweetViewModel.status
+      
+      usernameText.rac_text <~ tweetViewModel.username.producer
+          |> map { "@\($0)" }
+      
+      // because the ageInSeconds property is mutable, we need to ensure that we 'complete' 
+      // the signal that the rac_text property is bound to. Hence the use of takeUntil.
+      ageText.rac_text <~ tweetViewModel.ageInSeconds.producer
+          |> map { "\($0) secs" }
+          |> takeUntil(triggerSignal)
+      
       
       avatarImageView.image = nil
       avatarImageSignalProducer(tweetViewModel.profileImageUrl.value)

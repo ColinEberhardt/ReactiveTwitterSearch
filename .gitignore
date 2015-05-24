@@ -204,9 +204,9 @@ xcuserdata
 #
 # "The data in this file not represent state of your project.
 # If you'll leave this file in git - you will have merge conflicts during 
-# pull your cahnges to other's repo"
-#
-#*.xccheckout
+# pull your changes to other's repo"
+
+*.xccheckout
 
 # Ignore all the frameworks fetched by carthage
 Carthage

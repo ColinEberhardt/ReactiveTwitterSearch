@@ -19,7 +19,7 @@ class TweetCellView: UITableViewCell, ReactiveView {
   
   lazy var scheduler: QueueScheduler = {
     let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
-    return QueueScheduler(queue)
+    return QueueScheduler(queue: queue)
   }()
   
   func bindViewModel(viewModel: AnyObject) {

@@ -23,11 +23,6 @@ class TwitterSearchViewModel {
     self.searchService = searchService
     
     let name = MutableProperty<String>("")
-    
-    let textToSearchSignal: SignalProducer<String, NSError>  -> SignalProducer<TwitterResponse, NSError> =
-      flatMap(.Latest) {
-        text in self.searchService.signalForSearchWithText(text)
-      }
 
     searchService.requestAccessToTwitterSignal()
       |> then(searchText.producer |> mapError { _ in TwitterInstantError.NoError.toError() })
@@ -38,7 +33,9 @@ class TwitterSearchViewModel {
       |> on(next: {
           _ in self.isSearching.put(true)
         })
-      |> textToSearchSignal
+      |> flatMap(.Latest) { text in
+          self.searchService.signalForSearchWithText(text)
+        }
       |> observeOn(QueueScheduler.mainQueueScheduler)
       |> start(next: {
           response in

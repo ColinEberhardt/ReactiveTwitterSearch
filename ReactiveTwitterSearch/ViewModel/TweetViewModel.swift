@@ -21,18 +21,18 @@ class TweetViewModel: NSObject {
   init (tweet: Tweet) {
     self.tweet = tweet;
     
-    ageInSeconds = MutableProperty(Int(NSDate.new().timeIntervalSinceDate(tweet.timestamp)))
+    ageInSeconds = MutableProperty(Int(NSDate().timeIntervalSinceDate(tweet.timestamp)))
     status = ConstantProperty(tweet.status)
     username = ConstantProperty(tweet.username)
     profileImageUrl = ConstantProperty(tweet.profileImageUrl)
   }
   
   private func computeAge() -> Int {
-    return Int(NSDate.new().timeIntervalSinceDate(tweet.timestamp))
+    return Int(NSDate().timeIntervalSinceDate(tweet.timestamp))
   }
   
   func updateTime() {
-    ageInSeconds.put(computeAge())
+    ageInSeconds.value = computeAge()
   }
   
 }

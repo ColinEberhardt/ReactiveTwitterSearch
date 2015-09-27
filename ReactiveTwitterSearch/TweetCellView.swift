@@ -25,37 +25,42 @@ class TweetCellView: UITableViewCell, ReactiveView {
   func bindViewModel(viewModel: AnyObject) {
     if let tweetViewModel = viewModel as? TweetViewModel {
       
-      let triggerSignal = self.rac_prepareForReuseSignal.asSignal() |> toVoidSignal
-      
+        
+    //FIXME: how to lift this to signal producer for takeUntil?
+      let triggerSignal = toVoidSignal(self.rac_prepareForReuseSignal.asSignal())
+
+        
       statusText.rac_text <~ tweetViewModel.status
       
-      usernameText.rac_text <~ tweetViewModel.username.producer
-          |> map { "@\($0)" }
+      usernameText.rac_text <~ tweetViewModel.username.producer.map { "@\($0)" }
       
       // because the ageInSeconds property is mutable, we need to ensure that we 'complete' 
       // the signal that the rac_text property is bound to. Hence the use of takeUntil.
       ageText.rac_text <~ tweetViewModel.ageInSeconds.producer
-          |> map { "\($0) secs" }
-          |> takeUntil(triggerSignal)
+          .map { "\($0) secs" }
+//          .takeUntil(triggerSignal)
       
       
       avatarImageView.image = nil
       avatarImageSignalProducer(tweetViewModel.profileImageUrl.value)
-        |> startOn(scheduler)
-        |> takeUntil(triggerSignal)
-        |> observeOn(QueueScheduler.mainQueueScheduler)
-        |> start(next: {
+        .startOn(scheduler)
+//        .takeUntil(triggerSignal)
+        .observeOn(QueueScheduler.mainQueueScheduler)
+        .start(Event.sink(next: {
           self.avatarImageView.image = $0
-        })
+        }))
     }
   }
   
-  private func avatarImageSignalProducer(imageUrl: String) -> SignalProducer<UIImage, NoError> {
+  private func avatarImageSignalProducer(imageUrl: String) -> SignalProducer<UIImage?, NoError> {
     return SignalProducer {
       sink, _ in
-      let data = NSData(contentsOfURL: NSURL(string: imageUrl)!)
-      let image = UIImage(data: data!)
-      sendNext(sink, image!)
+        guard let url = NSURL(string: imageUrl), data = NSData(contentsOfURL: url) else {
+            print("App Transport Security rejected URL: \(imageUrl)")
+            return
+        }
+      let image = UIImage(data: data)
+      sendNext(sink, image)
       sendCompleted(sink)
     }
   }

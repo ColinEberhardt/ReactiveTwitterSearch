@@ -43,11 +43,11 @@ class TableViewBindingHelper<T: AnyObject> : NSObject {
     
     super.init()
     
-    sourceSignal.start(next: {
+    sourceSignal.start(Event.sink(next: {
       data in
-      self.dataSource.data = data.map { $0 as AnyObject }
+        self.dataSource.data = data.map({ $0 as AnyObject })
       self.tableView.reloadData()
-    })
+    }))
     
     tableView.dataSource = dataSource
     tableView.delegate = dataSource
@@ -71,7 +71,7 @@ class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let item: AnyObject = data[indexPath.row]
-    let cell = tableView.dequeueReusableCellWithIdentifier(templateCell.reuseIdentifier!) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(templateCell.reuseIdentifier!)!
     if let reactiveView = cell as? ReactiveView {
       reactiveView.bindViewModel(item)
     }

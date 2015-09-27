@@ -56,14 +56,18 @@ class TwitterSearchService {
       
       if let twitterAccount = maybeTwitterAccount {
         request.account = twitterAccount
-        println("performing request")
+        print("performing request")
         request.performRequestWithHandler {
           (data, response, _) -> Void in
-          println("response received")
+          print("response received")
           if response != nil && response.statusCode == 200 {
-            let timelineData = NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: nil) as! NSDictionary
-            sendNext(sink, TwitterResponse(tweetsDictionary: timelineData))
-            sendCompleted(sink)
+            do {
+            let timelineData = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
+                sendNext(sink, TwitterResponse(tweetsDictionary: timelineData))
+                sendCompleted(sink)
+            } catch _  {
+                sendError(sink, TwitterInstantError.InvalidResponse.toError())
+            }
           } else {
             sendError(sink, TwitterInstantError.InvalidResponse.toError())
           }

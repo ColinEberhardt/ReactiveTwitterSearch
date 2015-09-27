@@ -29,10 +29,10 @@ extension RACSignal {
 public func toVoidSignal<T, E>(signal: Signal<T, E>) -> Signal<(), NoError> {
   return Signal {
     sink in
-    signal.observe(SinkOf {
+    signal.observe({
       event in
       switch event {
-      case let .Next:
+      case .Next:
         sendNext(sink, ())
       default:
         break

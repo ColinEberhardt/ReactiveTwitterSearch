@@ -27,9 +27,9 @@ class TwitterSearchViewController: UIViewController {
     super.viewDidLoad()
     
     viewModel.searchText <~ searchTextField.rac_text
-    searchAcitivyIndicator.rac_hidden <~ viewModel.isSearching.producer |> map { !$0 }
+    searchAcitivyIndicator.rac_hidden <~ viewModel.isSearching.producer.map { !$0 }
     executionTimeTextField.rac_text  <~ viewModel.queryExecutionTime
-    tweetsTable.rac_alpha <~ viewModel.isSearching.producer |> map { $0 ? CGFloat(0.5) : CGFloat(1.0) }
+    tweetsTable.rac_alpha <~ viewModel.isSearching.producer.map { $0 ? CGFloat(0.5) : CGFloat(1.0) }
     
     bindingHelper = TableViewBindingHelper(tableView: tweetsTable, sourceSignal: viewModel.tweets.producer, nibName: "TweetCell", selectionCommand: nil)
   }

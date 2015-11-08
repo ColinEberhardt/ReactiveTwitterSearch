@@ -27,7 +27,7 @@ class TweetCellView: UITableViewCell, ReactiveView {
       
         
     //FIXME: how to lift this to signal producer for takeUntil?
-      let triggerSignal = toVoidSignal(self.rac_prepareForReuseSignal.asSignal())
+//      _ = toVoidSignal(self.rac_prepareForReuseSignal.asSignal())
 
         
       statusText.rac_text <~ tweetViewModel.status
@@ -46,9 +46,9 @@ class TweetCellView: UITableViewCell, ReactiveView {
         .startOn(scheduler)
 //        .takeUntil(triggerSignal)
         .observeOn(QueueScheduler.mainQueueScheduler)
-        .start(Event.sink(next: {
+        .startWithNext {
           self.avatarImageView.image = $0
-        }))
+        }
     }
   }
   
@@ -60,8 +60,8 @@ class TweetCellView: UITableViewCell, ReactiveView {
             return
         }
       let image = UIImage(data: data)
-      sendNext(sink, image)
-      sendCompleted(sink)
+      sink.sendNext(image)
+      sink.sendCompleted()
     }
   }
 }

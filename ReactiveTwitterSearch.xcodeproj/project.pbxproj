@@ -17,14 +17,11 @@
 		3C5DA5AE1AFFCD7A002FBBD5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5AD1AFFCD7A002FBBD5 /* Accounts.framework */; };
 		3C5DA5B61B015177002FBBD5 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C5DA5B51B015177002FBBD5 /* TweetCell.xib */; };
 		3C5DA5B81B0151B3002FBBD5 /* TweetCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5B71B0151B3002FBBD5 /* TweetCellView.swift */; };
-		3C5DA5C61B01DC0E002FBBD5 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C31B01DC0E002FBBD5 /* Box.framework */; };
 		3C5DA5C71B01DC0E002FBBD5 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */; };
 		3C5DA5C81B01DC0E002FBBD5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C51B01DC0E002FBBD5 /* Result.framework */; };
 		3C5DA5C91B01DC1D002FBBD5 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C31B01DC0E002FBBD5 /* Box.framework */; };
 		3C5DA5CA1B01DC1D002FBBD5 /* Box.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C31B01DC0E002FBBD5 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3C5DA5CB1B01DC1D002FBBD5 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */; };
 		3C5DA5CC1B01DC1D002FBBD5 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3C5DA5CD1B01DC1D002FBBD5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C51B01DC0E002FBBD5 /* Result.framework */; };
 		3C5DA5CE1B01DC1D002FBBD5 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C51B01DC0E002FBBD5 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C5DA5DF1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5DD1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift */; };
 		3C5DA5E01B02A0CA002FBBD5 /* TweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5DE1B02A0CA002FBBD5 /* TweetViewModel.swift */; };
@@ -96,11 +93,8 @@
 			files = (
 				3C5DA5C81B01DC0E002FBBD5 /* Result.framework in Frameworks */,
 				3C5DA5C71B01DC0E002FBBD5 /* ReactiveCocoa.framework in Frameworks */,
-				3C5DA5CD1B01DC1D002FBBD5 /* Result.framework in Frameworks */,
 				3C5DA5AE1AFFCD7A002FBBD5 /* Accounts.framework in Frameworks */,
-				3C5DA5CB1B01DC1D002FBBD5 /* ReactiveCocoa.framework in Frameworks */,
 				3C5DA5C91B01DC1D002FBBD5 /* Box.framework in Frameworks */,
-				3C5DA5C61B01DC0E002FBBD5 /* Box.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +108,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3C5DA56C1AFFC6FA002FBBD5 = {
+		38C973A61BEEC4BA006F05BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				3C5DA5C31B01DC0E002FBBD5 /* Box.framework */,
@@ -122,9 +116,17 @@
 				3C5DA5C51B01DC0E002FBBD5 /* Result.framework */,
 				3C5DA5AF1AFFCD84002FBBD5 /* Social.framework */,
 				3C5DA5AD1AFFCD7A002FBBD5 /* Accounts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C5DA56C1AFFC6FA002FBBD5 = {
+			isa = PBXGroup;
+			children = (
 				3C5DA5771AFFC6FA002FBBD5 /* ReactiveTwitterSearch */,
 				3C5DA58D1AFFC6FA002FBBD5 /* ReactiveTwitterSearchTests */,
 				3C5DA5761AFFC6FA002FBBD5 /* Products */,
+				38C973A61BEEC4BA006F05BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -220,6 +222,7 @@
 				3C5DA5721AFFC6FA002FBBD5 /* Frameworks */,
 				3C5DA5731AFFC6FA002FBBD5 /* Resources */,
 				3C5DA5A61AFFC72F002FBBD5 /* Embed Frameworks */,
+				38C0DA921BEF072D0017D6B4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -256,7 +259,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Colin Eberhardt";
 				TargetAttributes = {
 					3C5DA5741AFFC6FA002FBBD5 = {
@@ -306,6 +309,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38C0DA921BEF072D0017D6B4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3C5DA5711AFFC6FA002FBBD5 /* Sources */ = {
@@ -386,6 +406,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -456,6 +477,7 @@
 				);
 				INFOPLIST_FILE = ReactiveTwitterSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottlogic.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -470,6 +492,7 @@
 				);
 				INFOPLIST_FILE = ReactiveTwitterSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottlogic.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -488,6 +511,7 @@
 				);
 				INFOPLIST_FILE = ReactiveTwitterSearchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottlogic.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactiveTwitterSearch.app/ReactiveTwitterSearch";
 			};
@@ -503,6 +527,7 @@
 				);
 				INFOPLIST_FILE = ReactiveTwitterSearchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottlogic.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactiveTwitterSearch.app/ReactiveTwitterSearch";
 			};

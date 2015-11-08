@@ -38,7 +38,7 @@ class TwitterSearchViewModel {
             .flatMap(.Latest) { text in
                 self.searchService.signalForSearchWithText(text)
             })
-        .observeOn(QueueScheduler.mainQueueScheduler).start(Event.sink(error: {
+        .observeOn(QueueScheduler.mainQueueScheduler).start(Observer(failed: {
             print("Error \($0)")
             },
             next: {

@@ -43,11 +43,11 @@ class TableViewBindingHelper<T: AnyObject> : NSObject {
     
     super.init()
     
-    sourceSignal.start(Event.sink(next: {
+    sourceSignal.startWithNext{    
       data in
         self.dataSource.data = data.map({ $0 as AnyObject })
       self.tableView.reloadData()
-    }))
+    }
     
     tableView.dataSource = dataSource
     tableView.delegate = dataSource

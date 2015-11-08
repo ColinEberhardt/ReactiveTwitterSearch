@@ -24,13 +24,13 @@ class TwitterSearchService {
   
   func requestAccessToTwitterSignal() -> SignalProducer<Int, NSError> {
     return SignalProducer {
-      sink, _ in
+      (observer: Observer<Int, NSError>, _) in
       self.accountStore.requestAccessToAccountsWithType(self.twitterAccountType, options: nil) {
         (granted, _) in
         if granted {
-          sendCompleted(sink)
+          observer.sendCompleted()
         } else {
-          sendError(sink, TwitterInstantError.AccessDenied.toError())
+          observer.sendFailed(TwitterInstantError.AccessDenied.toError())
         }
       }
     }
@@ -63,17 +63,17 @@ class TwitterSearchService {
           if response != nil && response.statusCode == 200 {
             do {
             let timelineData = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
-                sendNext(sink, TwitterResponse(tweetsDictionary: timelineData))
-                sendCompleted(sink)
+                sink.sendNext(TwitterResponse(tweetsDictionary: timelineData))
+                sink.sendCompleted()
             } catch _  {
-                sendError(sink, TwitterInstantError.InvalidResponse.toError())
+                sink.sendFailed(TwitterInstantError.InvalidResponse.toError())
             }
           } else {
-            sendError(sink, TwitterInstantError.InvalidResponse.toError())
+            sink.sendFailed(TwitterInstantError.InvalidResponse.toError())
           }
         }
       } else {
-        sendError(sink, TwitterInstantError.NoTwitterAccounts.toError())
+        sink.sendFailed(TwitterInstantError.NoTwitterAccounts.toError())
       }
     }
   }

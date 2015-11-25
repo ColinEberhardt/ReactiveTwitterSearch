@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Colin Eberhardt. All rights reserved.
 //
 
+
 import UIKit
 import ReactiveCocoa
 
@@ -28,10 +29,10 @@ func lazyMutableProperty<T>(host: AnyObject, key: UnsafePointer<Void>, setter: T
   return lazyAssociatedProperty(host, key: key) {
     let property = MutableProperty<T>(getter())
     property.producer
-      .start(Event.sink(next: {
-        newValue in
-        setter(newValue)
-      }))
+        .startWithNext{
+            newValue in
+            setter(newValue)
+      }
     
     return property
   }
@@ -61,10 +62,10 @@ extension UITextField {
       
       let property = MutableProperty<String>(self.text ?? "")
       property.producer
-        .start(Event.sink(next: {
+        .startWithNext {
           newValue in
           self.text = newValue
-        }))
+        }
       return property
     }
   }

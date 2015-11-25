@@ -9,22 +9,25 @@
 import Foundation
 import ReactiveCocoa
 
+/*
 extension RACSignal {
   func asSignal() -> Signal<AnyObject?, NSError> {
     return Signal {
-      sink in
+        (observer: Observer<Value, Error>) in
       self.subscribeNext({
-          any in
-          sendNext(sink, any)
+          (any: AnyObject!) -> Void in
+          observer.sendNext(any)
         }, error: {
           error in
-          sendError(sink, error)
+          observer.sendFailed(error)
         }, completed: {
-          sendCompleted(sink)
+          observer.sendCompleted()
         })
     }
   }
 }
+*/
+
 
 public func toVoidSignal<T, E>(signal: Signal<T, E>) -> Signal<(), NoError> {
   return Signal {
@@ -33,7 +36,7 @@ public func toVoidSignal<T, E>(signal: Signal<T, E>) -> Signal<(), NoError> {
       event in
       switch event {
       case .Next:
-        sendNext(sink, ())
+        sink.sendNext(())
       default:
         break
       }

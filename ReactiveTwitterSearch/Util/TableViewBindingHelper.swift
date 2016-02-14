@@ -48,9 +48,12 @@ class TableViewBindingHelper<T: AnyObject> : NSObject {
         self.dataSource.data = data.map({ $0 as AnyObject })
       self.tableView.reloadData()
     }
-    
+
     tableView.dataSource = dataSource
     tableView.delegate = dataSource
+
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 100.0
   }
 }
 
@@ -76,10 +79,6 @@ class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
       reactiveView.bindViewModel(item)
     }
     return cell
-  }
-  
-  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return templateCell.frame.size.height
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

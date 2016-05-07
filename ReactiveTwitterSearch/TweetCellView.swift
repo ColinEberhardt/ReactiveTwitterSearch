@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Colin Eberhardt. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import ReactiveCocoa
+import Result
 
 class TweetCellView: UITableViewCell, ReactiveView {
   
@@ -24,7 +24,6 @@ class TweetCellView: UITableViewCell, ReactiveView {
   
   func bindViewModel(viewModel: AnyObject) {
     if let tweetViewModel = viewModel as? TweetViewModel {
-      
         
     //FIXME: how to lift this to signal producer for takeUntil?
 //      _ = toVoidSignal(self.rac_prepareForReuseSignal.asSignal())

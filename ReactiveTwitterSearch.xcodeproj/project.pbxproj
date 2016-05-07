@@ -19,8 +19,6 @@
 		3C5DA5B81B0151B3002FBBD5 /* TweetCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5B71B0151B3002FBBD5 /* TweetCellView.swift */; };
 		3C5DA5C71B01DC0E002FBBD5 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */; };
 		3C5DA5C81B01DC0E002FBBD5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C51B01DC0E002FBBD5 /* Result.framework */; };
-		3C5DA5C91B01DC1D002FBBD5 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C31B01DC0E002FBBD5 /* Box.framework */; };
-		3C5DA5CA1B01DC1D002FBBD5 /* Box.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C31B01DC0E002FBBD5 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C5DA5CC1B01DC1D002FBBD5 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C5DA5CE1B01DC1D002FBBD5 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C51B01DC0E002FBBD5 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C5DA5DF1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5DD1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift */; };
@@ -50,7 +48,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3C5DA5CE1B01DC1D002FBBD5 /* Result.framework in Embed Frameworks */,
-				3C5DA5CA1B01DC1D002FBBD5 /* Box.framework in Embed Frameworks */,
 				3C5DA5CC1B01DC1D002FBBD5 /* ReactiveCocoa.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -74,7 +71,6 @@
 		3C5DA5AF1AFFCD84002FBBD5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		3C5DA5B51B015177002FBBD5 /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 		3C5DA5B71B0151B3002FBBD5 /* TweetCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCellView.swift; sourceTree = "<group>"; };
-		3C5DA5C31B01DC0E002FBBD5 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
 		3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		3C5DA5C51B01DC0E002FBBD5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		3C5DA5DD1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterSearchViewModel.swift; path = ViewModel/TwitterSearchViewModel.swift; sourceTree = "<group>"; };
@@ -94,7 +90,6 @@
 				3C5DA5C81B01DC0E002FBBD5 /* Result.framework in Frameworks */,
 				3C5DA5C71B01DC0E002FBBD5 /* ReactiveCocoa.framework in Frameworks */,
 				3C5DA5AE1AFFCD7A002FBBD5 /* Accounts.framework in Frameworks */,
-				3C5DA5C91B01DC1D002FBBD5 /* Box.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +106,6 @@
 		38C973A61BEEC4BA006F05BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3C5DA5C31B01DC0E002FBBD5 /* Box.framework */,
 				3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */,
 				3C5DA5C51B01DC0E002FBBD5 /* Result.framework */,
 				3C5DA5AF1AFFCD84002FBBD5 /* Social.framework */,
@@ -317,7 +311,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
 			);
 			outputPaths = (
 			);

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Colin Eberhardt. All rights reserved.
 //
 
-import Foundation
-import ReactiveCocoa
 import UIKit
+import ReactiveCocoa
+import Result
 
 @objc protocol ReactiveView {
   func bindViewModel(viewModel: AnyObject)
@@ -62,7 +62,6 @@ class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
   private let templateCell: UITableViewCell
   var data: [AnyObject]
   
-  
   init(data: [AnyObject], templateCell: UITableViewCell) {
     self.data = data
     self.templateCell = templateCell
@@ -86,5 +85,4 @@ class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
       selectionCommand?.execute(data[indexPath.row])
     }*/
   }
-  
 }

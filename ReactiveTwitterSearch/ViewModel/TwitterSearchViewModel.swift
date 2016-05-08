@@ -12,8 +12,9 @@ import ReactiveCocoa
 class TwitterSearchViewModel {
 
   struct Constants {
-    static let SearchCharacterMinimum = 3
-    static let SearchThrottleTime = 1.0
+    static let SearchCharacterMinimum: Int = 3
+    static let SearchThrottleTime: NSTimeInterval = 1.0
+    static let TickIntervalLength: NSTimeInterval = 1.0
     static let DisabledTableAlpha: CGFloat = 0.5
     static let EnabledTableAlpha: CGFloat = 1.0
   }
@@ -48,7 +49,7 @@ class TwitterSearchViewModel {
             self.tweets.value = (response.tweets.map { TweetViewModel(tweet: $0) })
         }
 
-    timer(Constants.TimerTickLength, onScheduler: QueueScheduler.mainQueueScheduler).startWithNext { [weak self] _ in
+    timer(Constants.TickIntervalLength, onScheduler: QueueScheduler.mainQueueScheduler).startWithNext { [weak self] _ in
       self?.tweets.value.forEach { $0.updateTime() }
     }
 

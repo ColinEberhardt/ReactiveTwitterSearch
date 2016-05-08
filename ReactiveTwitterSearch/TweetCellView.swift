@@ -52,15 +52,10 @@ class TweetCellView: UITableViewCell, ReactiveView {
   }
   
   private func avatarImageSignalProducer(imageUrl: String) -> SignalProducer<UIImage?, NoError> {
-    return SignalProducer {
-      sink, _ in
-        guard let url = NSURL(string: imageUrl), data = NSData(contentsOfURL: url) else {
-            print("App Transport Security rejected URL: \(imageUrl)")
-            return
-        }
-      let image = UIImage(data: data)
-      sink.sendNext(image)
-      sink.sendCompleted()
+    guard let url = NSURL(string: imageUrl), data = NSData(contentsOfURL: url) else {
+        print("App Transport Security rejected URL: \(imageUrl)")
+        return SignalProducer(value: nil)
     }
+    return SignalProducer(value: UIImage(data: data))
   }
 }

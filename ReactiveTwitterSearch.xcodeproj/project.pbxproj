@@ -28,6 +28,7 @@
 		3C5DA5E71B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5E41B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift */; };
 		3C5DA5EA1B02A101002FBBD5 /* TwitterSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5E91B02A101002FBBD5 /* TwitterSearchService.swift */; };
 		3C5DA5EC1B02A1AB002FBBD5 /* TwitterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5EB1B02A1AB002FBBD5 /* TwitterResponse.swift */; };
+		437E04781CDEA31000C1223C /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E04771CDEA31000C1223C /* ArrayExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		3C5DA5E41B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactiveCocoaExtensions.swift; path = Util/ReactiveCocoaExtensions.swift; sourceTree = "<group>"; };
 		3C5DA5E91B02A101002FBBD5 /* TwitterSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterSearchService.swift; path = Service/TwitterSearchService.swift; sourceTree = "<group>"; };
 		3C5DA5EB1B02A1AB002FBBD5 /* TwitterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterResponse.swift; path = Service/TwitterResponse.swift; sourceTree = "<group>"; };
+		437E04771CDEA31000C1223C /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				3C5DA5E21B02A0F2002FBBD5 /* UIKitExtensions.swift */,
 				3C5DA5E31B02A0F2002FBBD5 /* TableViewBindingHelper.swift */,
 				3C5DA5E41B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift */,
+				437E04771CDEA31000C1223C /* ArrayExt.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				3C5DA5E71B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift in Sources */,
 				3C5DA5EA1B02A101002FBBD5 /* TwitterSearchService.swift in Sources */,
 				3C5DA5DF1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift in Sources */,
+				437E04781CDEA31000C1223C /* ArrayExt.swift in Sources */,
 				3C27FF361B032B93000EE18A /* Tweet.swift in Sources */,
 				3C27FF351B032B93000EE18A /* TwitterSearchError.swift in Sources */,
 				3C5DA5E01B02A0CA002FBBD5 /* TweetViewModel.swift in Sources */,

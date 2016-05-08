@@ -10,7 +10,6 @@ import Foundation
 import ReactiveCocoa
 
 class TweetViewModel: NSObject {
-  
   let status: ConstantProperty<String>
   let username: ConstantProperty<String>
   let profileImageUrl: ConstantProperty<String>
@@ -34,5 +33,4 @@ class TweetViewModel: NSObject {
   func updateTime() {
     ageInSeconds.value = computeAge()
   }
-  
 }

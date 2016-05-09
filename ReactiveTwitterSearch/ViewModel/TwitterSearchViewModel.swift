@@ -50,7 +50,7 @@ class TwitterSearchViewModel {
         }
 
     timer(Constants.TickIntervalLength, onScheduler: QueueScheduler.mainQueueScheduler).startWithNext { [weak self] _ in
-      self?.tweets.value.forEach { $0.updateTime() }
+        self?.tweets.value.update()
     }
 
     loadingAlpha <~ isSearching.producer.map(enabledAlpha)

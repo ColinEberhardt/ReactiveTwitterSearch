@@ -9,18 +9,23 @@
 import Foundation
 import ReactiveCocoa
 
+public protocol Updateable {
+    func update()
+}
+
 class TweetViewModel: NSObject {
   let status: ConstantProperty<String>
   let username: ConstantProperty<String>
   let profileImageUrl: ConstantProperty<String>
-  let ageInSeconds: MutableProperty<Int>
+  lazy var ageInSeconds: MutableProperty<Int> = {
+    return MutableProperty(self.computeAge())
+  }()
   
   private let tweet: Tweet
   
   init (tweet: Tweet) {
-    self.tweet = tweet;
+    self.tweet = tweet
     
-    ageInSeconds = MutableProperty(Int(NSDate().timeIntervalSinceDate(tweet.timestamp)))
     status = ConstantProperty(tweet.status)
     username = ConstantProperty(tweet.username)
     profileImageUrl = ConstantProperty(tweet.profileImageUrl)
@@ -29,8 +34,10 @@ class TweetViewModel: NSObject {
   private func computeAge() -> Int {
     return Int(NSDate().timeIntervalSinceDate(tweet.timestamp))
   }
-  
-  func updateTime() {
-    ageInSeconds.value = computeAge()
-  }
+}
+
+extension TweetViewModel: Updateable {
+    func update() {
+        ageInSeconds.value = computeAge()
+    }
 }

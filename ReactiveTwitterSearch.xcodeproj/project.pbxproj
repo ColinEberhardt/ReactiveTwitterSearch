@@ -19,8 +19,6 @@
 		3C5DA5B81B0151B3002FBBD5 /* TweetCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5B71B0151B3002FBBD5 /* TweetCellView.swift */; };
 		3C5DA5C71B01DC0E002FBBD5 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */; };
 		3C5DA5C81B01DC0E002FBBD5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C51B01DC0E002FBBD5 /* Result.framework */; };
-		3C5DA5C91B01DC1D002FBBD5 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C31B01DC0E002FBBD5 /* Box.framework */; };
-		3C5DA5CA1B01DC1D002FBBD5 /* Box.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C31B01DC0E002FBBD5 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C5DA5CC1B01DC1D002FBBD5 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C5DA5CE1B01DC1D002FBBD5 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DA5C51B01DC0E002FBBD5 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C5DA5DF1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5DD1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift */; };
@@ -30,6 +28,7 @@
 		3C5DA5E71B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5E41B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift */; };
 		3C5DA5EA1B02A101002FBBD5 /* TwitterSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5E91B02A101002FBBD5 /* TwitterSearchService.swift */; };
 		3C5DA5EC1B02A1AB002FBBD5 /* TwitterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5EB1B02A1AB002FBBD5 /* TwitterResponse.swift */; };
+		437E04781CDEA31000C1223C /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E04771CDEA31000C1223C /* ArrayExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3C5DA5CE1B01DC1D002FBBD5 /* Result.framework in Embed Frameworks */,
-				3C5DA5CA1B01DC1D002FBBD5 /* Box.framework in Embed Frameworks */,
 				3C5DA5CC1B01DC1D002FBBD5 /* ReactiveCocoa.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -74,7 +72,6 @@
 		3C5DA5AF1AFFCD84002FBBD5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		3C5DA5B51B015177002FBBD5 /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 		3C5DA5B71B0151B3002FBBD5 /* TweetCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCellView.swift; sourceTree = "<group>"; };
-		3C5DA5C31B01DC0E002FBBD5 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
 		3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		3C5DA5C51B01DC0E002FBBD5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		3C5DA5DD1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterSearchViewModel.swift; path = ViewModel/TwitterSearchViewModel.swift; sourceTree = "<group>"; };
@@ -84,6 +81,7 @@
 		3C5DA5E41B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactiveCocoaExtensions.swift; path = Util/ReactiveCocoaExtensions.swift; sourceTree = "<group>"; };
 		3C5DA5E91B02A101002FBBD5 /* TwitterSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterSearchService.swift; path = Service/TwitterSearchService.swift; sourceTree = "<group>"; };
 		3C5DA5EB1B02A1AB002FBBD5 /* TwitterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterResponse.swift; path = Service/TwitterResponse.swift; sourceTree = "<group>"; };
+		437E04771CDEA31000C1223C /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +92,6 @@
 				3C5DA5C81B01DC0E002FBBD5 /* Result.framework in Frameworks */,
 				3C5DA5C71B01DC0E002FBBD5 /* ReactiveCocoa.framework in Frameworks */,
 				3C5DA5AE1AFFCD7A002FBBD5 /* Accounts.framework in Frameworks */,
-				3C5DA5C91B01DC1D002FBBD5 /* Box.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +108,6 @@
 		38C973A61BEEC4BA006F05BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3C5DA5C31B01DC0E002FBBD5 /* Box.framework */,
 				3C5DA5C41B01DC0E002FBBD5 /* ReactiveCocoa.framework */,
 				3C5DA5C51B01DC0E002FBBD5 /* Result.framework */,
 				3C5DA5AF1AFFCD84002FBBD5 /* Social.framework */,
@@ -196,6 +192,7 @@
 				3C5DA5E21B02A0F2002FBBD5 /* UIKitExtensions.swift */,
 				3C5DA5E31B02A0F2002FBBD5 /* TableViewBindingHelper.swift */,
 				3C5DA5E41B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift */,
+				437E04771CDEA31000C1223C /* ArrayExt.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -317,7 +314,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
 			);
 			outputPaths = (
 			);
@@ -335,6 +331,7 @@
 				3C5DA5E71B02A0F2002FBBD5 /* ReactiveCocoaExtensions.swift in Sources */,
 				3C5DA5EA1B02A101002FBBD5 /* TwitterSearchService.swift in Sources */,
 				3C5DA5DF1B02A0CA002FBBD5 /* TwitterSearchViewModel.swift in Sources */,
+				437E04781CDEA31000C1223C /* ArrayExt.swift in Sources */,
 				3C27FF361B032B93000EE18A /* Tweet.swift in Sources */,
 				3C27FF351B032B93000EE18A /* TwitterSearchError.swift in Sources */,
 				3C5DA5E01B02A0CA002FBBD5 /* TweetViewModel.swift in Sources */,

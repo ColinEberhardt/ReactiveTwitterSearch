@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Colin Eberhardt. All rights reserved.
 //
 
-import Foundation
-import ReactiveCocoa
 import UIKit
+import ReactiveCocoa
+import Result
 
 @objc protocol ReactiveView {
   func bindViewModel(viewModel: AnyObject)
@@ -39,45 +39,44 @@ class TableViewBindingHelper<T: AnyObject> : NSObject {
     templateCell = nib.instantiateWithOwner(nil, options: nil)[0] as! UITableViewCell
     tableView.registerNib(nib, forCellReuseIdentifier: templateCell.reuseIdentifier!)
     
-    dataSource = DataSource(data: [AnyObject](), templateCell: templateCell)
+    dataSource = DataSource(data: nil, templateCell: templateCell)
     
     super.init()
     
-    sourceSignal.startWithNext{    
-      data in
-        self.dataSource.data = data.map({ $0 as AnyObject })
-      self.tableView.reloadData()
+    sourceSignal.startWithNext { [weak self] data in
+        self?.dataSource.data = data.map({ $0 as AnyObject })
+        self?.tableView.reloadData()
     }
 
-    tableView.dataSource = dataSource
-    tableView.delegate = dataSource
+    self.tableView.dataSource = dataSource
+    self.tableView.delegate = dataSource
 
-    tableView.rowHeight = UITableViewAutomaticDimension
+    self.tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 100.0
   }
 }
 
 class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
-  
   private let templateCell: UITableViewCell
-  var data: [AnyObject]
+  var data: [AnyObject]?
   
-  
-  init(data: [AnyObject], templateCell: UITableViewCell) {
+  init(data: [AnyObject]?, templateCell: UITableViewCell) {
     self.data = data
     self.templateCell = templateCell
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return data.count
+    return data?.count ?? 0
   }
-  
+
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let item: AnyObject = data[indexPath.row]
-    let cell = tableView.dequeueReusableCellWithIdentifier(templateCell.reuseIdentifier!)!
-    if let reactiveView = cell as? ReactiveView {
-      reactiveView.bindViewModel(item)
+    guard let cell = tableView.dequeueReusableCellWithIdentifier(templateCell.reuseIdentifier!),
+              item = data?.safeIndex(indexPath.row),
+              reactiveView = cell as? ReactiveView else {
+        return UITableViewCell()
     }
+
+    reactiveView.bindViewModel(item)
     return cell
   }
   
@@ -86,5 +85,4 @@ class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
       selectionCommand?.execute(data[indexPath.row])
     }*/
   }
-  
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import Result
 
 /*
 extension RACSignal {
@@ -27,7 +28,6 @@ extension RACSignal {
   }
 }
 */
-
 
 public func toVoidSignal<T, E>(signal: Signal<T, E>) -> Signal<(), NoError> {
   return Signal {

@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Colin Eberhardt. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import ReactiveCocoa
+import Result
 
 class TweetCellView: UITableViewCell, ReactiveView {
   
@@ -24,7 +24,6 @@ class TweetCellView: UITableViewCell, ReactiveView {
   
   func bindViewModel(viewModel: AnyObject) {
     if let tweetViewModel = viewModel as? TweetViewModel {
-      
         
     //FIXME: how to lift this to signal producer for takeUntil?
 //      _ = toVoidSignal(self.rac_prepareForReuseSignal.asSignal())
@@ -53,15 +52,10 @@ class TweetCellView: UITableViewCell, ReactiveView {
   }
   
   private func avatarImageSignalProducer(imageUrl: String) -> SignalProducer<UIImage?, NoError> {
-    return SignalProducer {
-      sink, _ in
-        guard let url = NSURL(string: imageUrl), data = NSData(contentsOfURL: url) else {
-            print("App Transport Security rejected URL: \(imageUrl)")
-            return
-        }
-      let image = UIImage(data: data)
-      sink.sendNext(image)
-      sink.sendCompleted()
+    guard let url = NSURL(string: imageUrl), data = NSData(contentsOfURL: url) else {
+        print("App Transport Security rejected URL: \(imageUrl)")
+        return SignalProducer(value: nil)
     }
+    return SignalProducer(value: UIImage(data: data))
   }
 }

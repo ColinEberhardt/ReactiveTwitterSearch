@@ -11,7 +11,6 @@ import Accounts
 import Social
 import ReactiveCocoa
 
-
 class TwitterSearchService {
   
   private let accountStore: ACAccountStore
@@ -48,24 +47,21 @@ class TwitterSearchService {
       return SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, URL: url, parameters: params)
     }
     
-    return SignalProducer {
-      sink, disposable in
-      
+    return SignalProducer { sink, disposable in
       let request = requestforSearchText(text)
       let maybeTwitterAccount = self.getTwitterAccount()
       
       if let twitterAccount = maybeTwitterAccount {
         request.account = twitterAccount
         print("performing request")
-        request.performRequestWithHandler {
-          (data, response, _) -> Void in
+        request.performRequestWithHandler { (data, response, _) in
           print("response received")
           if response != nil && response.statusCode == 200 {
             do {
-            let timelineData = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
+                let timelineData = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
                 sink.sendNext(TwitterResponse(tweetsDictionary: timelineData))
                 sink.sendCompleted()
-            } catch _  {
+            } catch _ {
                 sink.sendFailed(TwitterInstantError.InvalidResponse.toError())
             }
           } else {

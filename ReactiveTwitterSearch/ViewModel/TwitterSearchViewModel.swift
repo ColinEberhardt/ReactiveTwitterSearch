@@ -12,8 +12,9 @@ import ReactiveCocoa
 class TwitterSearchViewModel {
 
   struct Constants {
-    static let SearchCharacterMinimum = 3
-    static let SearchThrottleTime = 1.0
+    static let SearchCharacterMinimum: Int = 3
+    static let SearchThrottleTime: NSTimeInterval = 1.0
+    static let TickIntervalLength: NSTimeInterval = 1.0
     static let DisabledTableAlpha: CGFloat = 0.5
     static let EnabledTableAlpha: CGFloat = 1.0
   }
@@ -30,8 +31,6 @@ class TwitterSearchViewModel {
     
     self.searchService = searchService
     
-    let _ = MutableProperty<String>("")
-    
     searchService.requestAccessToTwitterSignal()
         .then(searchText.producer.mapError({ _ in TwitterInstantError.NoError.toError() })
             .filter {
@@ -44,23 +43,15 @@ class TwitterSearchViewModel {
             .flatMap(.Latest) { text in
                 self.searchService.signalForSearchWithText(text)
             })
-        .observeOn(QueueScheduler.mainQueueScheduler).start(Observer(failed: {
-            print("Error \($0)")
-            },
-            next: {
-                response in
-                self.isSearching.value = false
-                self.queryExecutionTime.value = "Execution time: \(response.responseTime)"
-                self.tweets.value = (response.tweets.map { TweetViewModel(tweet: $0) })
-        }))
-    
-    timer(Constants.SearchThrottleTime, onScheduler: QueueScheduler.mainQueueScheduler)
-      .startWithNext( {
-        _ in
-        for tweet in self.tweets.value {
-          tweet.updateTime()
+        .observeOn(QueueScheduler.mainQueueScheduler).startWithNext { response in
+            self.isSearching.value = false
+            self.queryExecutionTime.value = "Execution time: \(response.responseTime)"
+            self.tweets.value = (response.tweets.map { TweetViewModel(tweet: $0) })
         }
-      })
+
+    timer(Constants.TickIntervalLength, onScheduler: QueueScheduler.mainQueueScheduler).startWithNext { [weak self] _ in
+      self?.tweets.value.forEach { $0.updateTime() }
+    }
 
     loadingAlpha <~ isSearching.producer.map(enabledAlpha)
   }

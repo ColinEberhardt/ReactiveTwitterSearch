@@ -9,10 +9,6 @@
 import Foundation
 import ReactiveCocoa
 
-public protocol Updateable {
-    func update()
-}
-
 class TweetViewModel: NSObject {
   let status: ConstantProperty<String>
   let username: ConstantProperty<String>
@@ -34,10 +30,8 @@ class TweetViewModel: NSObject {
   private func computeAge() -> Int {
     return Int(NSDate().timeIntervalSinceDate(tweet.timestamp))
   }
-}
-
-extension TweetViewModel: Updateable {
-    func update() {
-        ageInSeconds.value = computeAge()
-    }
+    
+  func updateTime() {
+    ageInSeconds.value = computeAge()
+  }
 }

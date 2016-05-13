@@ -75,11 +75,6 @@ class TwitterSearchService {
   }
   
   private func getTwitterAccount() -> ACAccount? {
-    let twitterAccounts = self.accountStore.accountsWithAccountType(self.twitterAccountType) as! [ACAccount]
-    if twitterAccounts.count == 0 {
-      return nil
-    } else {
-      return twitterAccounts[0]
-    }
+    return self.accountStore.accountsWithAccountType(self.twitterAccountType).first as? ACAccount ?? nil
   }
 }

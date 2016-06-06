@@ -13,7 +13,7 @@ class TwitterSearchViewModel {
 
 	struct Constants {
 		static let SearchCharacterMinimum: Int = 3
-		static let SearchThrottleTime: NSTimeInterval = 1.0
+		static let SearchThrottleTime: NSTimeInterval = 0.5
 		static let TickIntervalLength: NSTimeInterval = 1.0
 		static let DisabledTableAlpha: CGFloat = 0.5
 		static let EnabledTableAlpha: CGFloat = 1.0
@@ -37,10 +37,11 @@ class TwitterSearchViewModel {
 				.filter {
 					$0.characters.count > Constants.SearchCharacterMinimum
 				}
-				.throttle(Constants.SearchThrottleTime, onScheduler: QueueScheduler.mainQueueScheduler)
+				.debounce(Constants.SearchThrottleTime, onScheduler: QueueScheduler.mainQueueScheduler)
 				.on(next: { [weak self] _ in
 					self?.isSearching.value = true
 				})
+				.observeOn(QueueScheduler())
 				.flatMap(.Latest) { [weak self] text in
 					(self?.searchService.signalForSearchWithText(text))!
 						.flatMapError { _ in

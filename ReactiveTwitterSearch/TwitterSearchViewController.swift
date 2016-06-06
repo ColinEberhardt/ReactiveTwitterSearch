@@ -26,13 +26,11 @@ class TwitterSearchViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		viewModel.searchText <~ searchTextField.rac_text
-		searchActivityIndicator.rac_hidden <~ viewModel.isSearching.producer.map { !$0 }
-		executionTimeTextField.rac_text  <~ viewModel.queryExecutionTime
-		tweetsTable.rac_alpha <~ viewModel.loadingAlpha
+		viewModel.searchText <~ searchTextField.rac_textSignal().toSignalProducer().assumeNoErrors().map { text in text as! String }
 
-//		DynamicProperty(object: executionTimeTextField, keyPath: "text") <~ viewModel.queryExecutionTime.producer.map { $0 }
-//		DynamicProperty(object: tweetsTable, keyPath: "alpha") <~ viewModel.loadingAlpha.producer.map { $0 }
+		DynamicProperty(object: searchActivityIndicator, keyPath: "hidden") <~ viewModel.isSearching.producer.map { !$0 }
+		DynamicProperty(object: executionTimeTextField, keyPath: "text") <~ viewModel.queryExecutionTime
+		DynamicProperty(object: tweetsTable, keyPath: "alpha") <~ viewModel.loadingAlpha
 
 		bindingHelper = TableViewBindingHelper(tableView: tweetsTable, sourceSignal: viewModel.tweets.producer, nibName: "TweetCell", selectionCommand: nil)
 	}

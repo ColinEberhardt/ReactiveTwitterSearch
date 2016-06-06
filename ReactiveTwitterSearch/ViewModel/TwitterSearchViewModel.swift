@@ -28,7 +28,6 @@ class TwitterSearchViewModel {
 	private let searchService: TwitterSearchService
 
 	init(searchService: TwitterSearchService) {
-
 		self.searchService = searchService
 
 		searchService.requestAccessToTwitterSignal()

@@ -1,2 +1,4 @@
+git "https://gist.github.com/NachoSoto/25b0003c1b15d7d11a8d" "b49a909abab9ca34c5cdf229c03ae064c5071c52"
+github "robrix/Box" "2.0"
 github "antitypical/Result" "2.0.0"
 github "ReactiveCocoa/ReactiveCocoa" "v4.1.0"

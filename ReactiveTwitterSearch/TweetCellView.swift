@@ -44,7 +44,7 @@ class TweetCellView: UITableViewCell, ReactiveView {
 			avatarImageSignalProducer(tweetViewModel.profileImageUrl.value)
 				.startOn(scheduler)
 				.takeUntil(reuseSignal)
-				.observeOn(QueueScheduler.mainQueueScheduler)
+				.observeOn(UIScheduler())
 				.startWithNext { [weak self] in
 					self?.avatarImageView.image = $0
 				}

@@ -18,7 +18,7 @@ class TwitterSearchViewController: UIViewController {
 
 	private var bindingHelper: TableViewBindingHelper<TweetViewModel>!
 
-	var viewModel: TwitterSearchViewModel = {
+	let viewModel: TwitterSearchViewModel = {
 		let searchService = TwitterSearchService()
 		return TwitterSearchViewModel(searchService: searchService)
 	}()
@@ -26,7 +26,11 @@ class TwitterSearchViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		viewModel.searchText <~ searchTextField.rac_textSignal().toSignalProducer().assumeNoErrors().map { text in text as! String }
+		viewModel.searchText <~ searchTextField
+			.rac_textSignal()
+			.toSignalProducer()
+			.assumeNoErrors()
+			.map { $0 as! String }
 
 		DynamicProperty(object: searchActivityIndicator, keyPath: "hidden") <~ viewModel.isSearching.producer.map { !$0 }
 		DynamicProperty(object: executionTimeTextField, keyPath: "text") <~ viewModel.queryExecutionTime

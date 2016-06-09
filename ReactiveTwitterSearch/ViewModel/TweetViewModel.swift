@@ -35,3 +35,4 @@ class TweetViewModel: NSObject {
 		ageInSeconds.value = computeAge()
 	}
 }
+

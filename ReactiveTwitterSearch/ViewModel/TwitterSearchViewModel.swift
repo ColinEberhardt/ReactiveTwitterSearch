@@ -33,21 +33,19 @@ class TwitterSearchViewModel {
 		searchService.requestAccessToTwitterSignal()
 			.then(searchText.producer
 				.flatMapError { _ in return SignalProducer.empty }
-				.filter {
-					$0.characters.count > Constants.SearchCharacterMinimum
-				}
+				.filter { $0.characters.count > Constants.SearchCharacterMinimum }
 				.debounce(Constants.SearchThrottleTime, onScheduler: QueueScheduler.mainQueueScheduler)
-				.on(next: { [weak self] _ in
-					self?.isSearching.value = true
+				.on(next: { [unowned self] _ in
+					self.isSearching.value = true
 				})
-				.observeOn(QueueScheduler())
 				.flatMap(.Latest) { [weak self] text in
 					(self?.searchService.signalForSearchWithText(text))!
+						.observeOn(QueueScheduler())
 						.flatMapError { _ in
 							return SignalProducer.empty
 						}
 				})
-			.observeOn(QueueScheduler.mainQueueScheduler)
+			.observeOn(UIScheduler())
 			.startWithNext { [weak self] response in
 				self?.isSearching.value = false
 				self?.queryExecutionTime.value = "Execution time: \(response.responseTime)"

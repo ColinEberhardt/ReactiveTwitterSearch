@@ -27,7 +27,7 @@
 		3C5DA5EA1B02A101002FBBD5 /* TwitterSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5E91B02A101002FBBD5 /* TwitterSearchService.swift */; };
 		3C5DA5EC1B02A1AB002FBBD5 /* TwitterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DA5EB1B02A1AB002FBBD5 /* TwitterResponse.swift */; };
 		437E04781CDEA31000C1223C /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E04771CDEA31000C1223C /* ArrayExt.swift */; };
-		E4C77B361D02A23F00AA4611 /* Signal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C77B351D02A23F00AA4611 /* Signal+Extensions.swift */; };
+		48BE94E31D08B54600907BCB /* Signal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE94E21D08B54600907BCB /* Signal+Extensions.swift */; };
 		E4C77B381D02A50100AA4611 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C77B371D02A50100AA4611 /* Box.framework */; };
 		E4C77B391D02A72700AA4611 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C77B371D02A50100AA4611 /* Box.framework */; };
 		E4C77B3A1D02A72700AA4611 /* Box.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E4C77B371D02A50100AA4611 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -83,7 +83,7 @@
 		3C5DA5E91B02A101002FBBD5 /* TwitterSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterSearchService.swift; path = Service/TwitterSearchService.swift; sourceTree = "<group>"; };
 		3C5DA5EB1B02A1AB002FBBD5 /* TwitterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterResponse.swift; path = Service/TwitterResponse.swift; sourceTree = "<group>"; };
 		437E04771CDEA31000C1223C /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
-		E4C77B351D02A23F00AA4611 /* Signal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Signal+Extensions.swift"; path = "Carthage/Checkouts/25b0003c1b15d7d11a8d/Signal+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		48BE94E21D08B54600907BCB /* Signal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Signal+Extensions.swift"; path = "Carthage/Checkouts/3f85ffd1efb93980596a8c61326477e0/Signal+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		E4C77B371D02A50100AA4611 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,7 +195,7 @@
 		3C5DA5E11B02A0E6002FBBD5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				E4C77B351D02A23F00AA4611 /* Signal+Extensions.swift */,
+				48BE94E21D08B54600907BCB /* Signal+Extensions.swift */,
 				3C5DA5E31B02A0F2002FBBD5 /* TableViewBindingHelper.swift */,
 				437E04771CDEA31000C1223C /* ArrayExt.swift */,
 			);
@@ -340,11 +340,11 @@
 				3C27FF351B032B93000EE18A /* TwitterSearchError.swift in Sources */,
 				3C5DA5E01B02A0CA002FBBD5 /* TweetViewModel.swift in Sources */,
 				3C5DA5B81B0151B3002FBBD5 /* TweetCellView.swift in Sources */,
-				E4C77B361D02A23F00AA4611 /* Signal+Extensions.swift in Sources */,
 				3C5DA57D1AFFC6FA002FBBD5 /* TwitterSearchViewController.swift in Sources */,
 				3C5DA5E61B02A0F2002FBBD5 /* TableViewBindingHelper.swift in Sources */,
 				3C5DA5EC1B02A1AB002FBBD5 /* TwitterResponse.swift in Sources */,
 				3C5DA57B1AFFC6FA002FBBD5 /* AppDelegate.swift in Sources */,
+				48BE94E31D08B54600907BCB /* Signal+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

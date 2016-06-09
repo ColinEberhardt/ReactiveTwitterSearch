@@ -52,9 +52,11 @@ class TweetCellView: UITableViewCell, ReactiveView {
 	}
 
 	private func avatarImageSignalProducer(imageUrl: String) -> SignalProducer<UIImage?, NoError> {
-		guard let url = NSURL(string: imageUrl), data = NSData(contentsOfURL: url) else {
-			return SignalProducer(value: nil)
+		return SignalProducer { (observer: Observer<UIImage?, NoError>, _) in
+			if let url = NSURL(string: imageUrl), data = NSData(contentsOfURL: url) {
+				observer.sendNext(UIImage(data: data))
+			}
+			observer.sendCompleted()
 		}
-		return SignalProducer(value: UIImage(data: data))
 	}
 }

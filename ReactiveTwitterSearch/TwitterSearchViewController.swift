@@ -29,8 +29,8 @@ class TwitterSearchViewController: UIViewController {
 		viewModel.searchText <~ searchTextField
 			.rac_textSignal()
 			.toSignalProducer()
-			.assumeNoErrors()
 			.map { $0 as! String }
+			.assumeNoErrors()
 
 		DynamicProperty(object: searchActivityIndicator, keyPath: "hidden") <~ viewModel.isSearching.producer.map { !$0 }
 		DynamicProperty(object: executionTimeTextField, keyPath: "text") <~ viewModel.queryExecutionTime

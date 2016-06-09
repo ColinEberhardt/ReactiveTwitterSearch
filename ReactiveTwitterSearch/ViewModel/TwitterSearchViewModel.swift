@@ -24,7 +24,7 @@ class TwitterSearchViewModel {
 	let isSearching = MutableProperty<Bool>(false)
 	let tweets = MutableProperty<[TweetViewModel]>([TweetViewModel]())
 	let loadingAlpha = MutableProperty<CGFloat>(Constants.DisabledTableAlpha)
-
+	
 	private let searchService: TwitterSearchService
 
 	init(searchService: TwitterSearchService) {
@@ -40,7 +40,7 @@ class TwitterSearchViewModel {
 				})
 				.flatMap(.Latest) { [weak self] text in
 					(self?.searchService.signalForSearchWithText(text))!
-						.observeOn(QueueScheduler())
+						.startOn(QueueScheduler())
 						.flatMapError { _ in
 							return SignalProducer.empty
 						}

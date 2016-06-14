@@ -9,14 +9,14 @@
 import Foundation
 
 struct TwitterResponse {
-  let responseTime: Double
-  let tweets: [Tweet]
-  
-  init(tweetsDictionary: NSDictionary) {
-    let statusData = tweetsDictionary["statuses"] as! [NSDictionary]
-    let searchMetadata = tweetsDictionary["search_metadata"] as! NSDictionary
-    
-    tweets = statusData.map { Tweet(json: $0) }
-    responseTime = searchMetadata["completed_in"] as! Double
-  }
+	let responseTime: Double
+	let tweets: [Tweet]
+
+	init(tweetsDictionary: NSDictionary) {
+		let statusData = tweetsDictionary["statuses"] as! [NSDictionary]
+		let searchMetadata = tweetsDictionary["search_metadata"] as! NSDictionary
+
+		tweets = statusData.map { Tweet(json: $0) }
+		responseTime = searchMetadata["completed_in"] as! Double
+	}
 }

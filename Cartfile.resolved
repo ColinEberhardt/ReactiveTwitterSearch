@@ -1,2 +1,4 @@
+git "https://gist.github.com/c0diq/3f85ffd1efb93980596a8c61326477e0" "213921ec82a0b218c081d1e1caa4c7fc8cc1a6d4"
+github "robrix/Box" "becbb8114216072aab6e5fb1eef8efa25350f3c3"
 github "antitypical/Result" "2.0.0"
-github "ReactiveCocoa/ReactiveCocoa" "v4.1.0"
+github "ReactiveCocoa/ReactiveCocoa" "e78a898f7bf6227f20fdbf254d9ed81f8d359022"
